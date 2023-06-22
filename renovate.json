@@ -7,7 +7,8 @@
   "repositories": [
     {
       "repository": "Auto-update",
-      "automerge": true,
+      "autoMerge": true,
+      "autoMergeMethod": "squash",
       "automergeType": "pr"
     }
   ]
