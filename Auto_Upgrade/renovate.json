@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "schedule": [
+    "*/2 * * * *"
+  ],
+  "timezone": "Asia/Kolkata",
+  "labels": [
+    "dependency-update"],
+  "autoApprove": true,
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "groupId:artifactId"
+      ],
+      "updateTypes": [
+        "groupId",
+        "artifactId",
+        "version"
+      ],
+      "groupName": "my-group",
+      "matchDatasource": "pom.xml",
+      "automerge": true,
+      "automergeType": "pr",
+      "commitMessagePrefix": "[git commit] ",
+      "commitMessageTopic": "Dependency Updates",
+      "automateUpgrade": true
+    }
+  ]
+}
+
+
+  
