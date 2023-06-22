@@ -8,8 +8,7 @@
     {
       "repository": "Auto-update",
       "autoMerge": true,
-      "autoMergeMethod": "squash",
-      "automergeType": "pr"
+      "autoMergeType": "pr"
     }
   ]
 }
