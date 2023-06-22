@@ -2,5 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "platform": "github",
+  "repositories": [
+    {
+      "repository": "Auto-update",
+      "automerge": true,
+      "automergeType": "pr"
+    }
   ]
 }
