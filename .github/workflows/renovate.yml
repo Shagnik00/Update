@@ -15,7 +15,7 @@ jobs:
       - name: Run Renovate
         uses: renovatebot/renovate@v35.131.0
       - name: Enable Automerge Action
-        uses: daneden/enable-automerge-action@v1.0.2
+        uses: daneden/enable-automerge-action@v23.55.0
 
 
         with:
