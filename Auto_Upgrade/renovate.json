@@ -23,7 +23,6 @@
       "groupName": "my-group",
       "matchDatasource": "pom.xml",
       "autoMerge": true,
-      "autoMergeMethod": "squash",
       "automergeType": "pr",
       "commitMessagePrefix": "[git commit] ",
       "commitMessageTopic": "Dependency Updates",
