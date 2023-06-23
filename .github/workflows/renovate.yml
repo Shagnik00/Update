@@ -1,4 +1,4 @@
-name: Renovate
+name: Perform Automatic Merge
 
 on:
   pull_request:
@@ -16,14 +16,13 @@ jobs:
       - name: Get Pull Requests
         id: pr
         run: |
-          echo "$(gh pr list -s open -F json)" >> pr_data.json
-          echo "::set-env name=PULL_REQUESTS::pr_data.json"
+          echo "::set-output name=pulls::$(gh pr list -s open -F json)"
 
       - name: Perform Automatic Merge
         run: |
-          pulls=$(cat $PULL_REQUESTS | jq -r '.[].number')
-          for pr in $pulls; do
-            gh pr merge $pr --merge
+          pulls="${{ steps.pr.outputs.pulls }}"
+          for pr in  2 6; do  # Replace 1, 2, 3 with the desired pull request numbers
+            gh pr merge $pr -m
           done
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
