@@ -25,4 +25,4 @@ jobs:
             gh pr merge $pr -m
           done
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
