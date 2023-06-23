@@ -1,24 +1,28 @@
-name: Renovate
+name: Perform Automatic Merge
 
 on:
-  schedule:
-   - cron: "*/2 * * * *"
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
-  renovate:
+  merge:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
-        
-      - name: Run Renovate
-        uses: renovatebot/renovate@v35.131.0
-      - name: Enable Automerge Action
-        uses: daneden/enable-automerge-action@v23.55.0
 
+      - name: Get Pull Requests
+        id: pr
+        run: |
+          echo "::set-output name=pulls::$(gh pr list -s open -F json)"
 
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Add any additional configuration options here
-          
+      - name: Perform Automatic Merge
+        run: |
+          pulls="${{ steps.pr.outputs.pulls }}"
+          for pr in $(echo "$pulls" | jq -r '.[].number'); do
+            gh pr merge $pr -m
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
