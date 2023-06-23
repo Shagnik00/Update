@@ -17,7 +17,6 @@ jobs:
         id: pr
         run: |
           echo "::set-output name=pulls::$(gh pr list -s open -F json)"
-
       - name: Perform Automatic Merge
         run: |
           pulls="${{ steps.pr.outputs.pulls }}"
