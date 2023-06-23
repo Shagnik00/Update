@@ -1,0 +1,28 @@
+
+name: Renovate
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Get Pull Requests
+        id: pr
+        run: |
+          echo "::set-output name=pulls::$(gh pr list -s open -F json)"
+      - name: Perform Automatic Merge
+        run: |
+          pulls="${{ steps.pr.outputs.pulls }}"
+          for pr in $(echo "$pulls" | jq -r '.[].number'); do
+            gh pr merge $pr -m
+          done
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
