@@ -3,12 +3,5 @@
   "extends": [
     "config:base"
   ],
-  "platform": "github",
-  "repositories": [
-    {
-      "repository": "Auto-update",
-      "autoMerge": true,
-      "autoMergeType": "pr"
-    }
-  ]
+ 
 }
