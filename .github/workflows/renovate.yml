@@ -21,7 +21,7 @@ jobs:
       - name: Perform Automatic Merge
         run: |
           pulls="${{ steps.pr.outputs.pulls }}"
-          for pr in  2 6; do  # Replace 1, 2, 3 with the desired pull request numbers
+          for pr in 2 6; do  # Replace 1, 2, 3 with the desired pull request numbers
             gh pr merge $pr -m
           done
         env:
